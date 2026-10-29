@@ -1,0 +1,9 @@
+﻿{
+  "platforms": ["ios", "android"],
+  "ios": {
+    "modules": ["SpyrrawNetworkModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.spyrrawnetwork.SpyrrawNetworkModule"]
+  }
+}

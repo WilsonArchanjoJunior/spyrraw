@@ -1,0 +1,12 @@
+﻿{
+  "schemaVersion": "1.0.0",
+  "name": "spyrraw-orchestrate",
+  "description": "Orquestração de agentes de IA locais para auditoria avançada e descoberta automatizada com o ecossistema Spyrraw.",
+  "skills": [
+    "Kc1t/alethe-orchestrate-skill"
+  ],
+  "preferences": {
+    "defaultPlaybook": "scout-then-build",
+    "budgetPerWave": 0.05
+  }
+}

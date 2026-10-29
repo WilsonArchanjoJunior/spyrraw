@@ -1,0 +1,23 @@
+﻿{
+  "expo": {
+    "name": "Spyrraw",
+    "slug": "spyrraw",
+    "version": "1.0.0",
+    "ios": {
+      "bundleIdentifier": "com.wilson.spyrraw",
+      "infoPlist": {
+        "NSLocalNetworkUsageDescription": "Spyrraw precisa de acesso à rede local para auditar e identificar vulnerabilidades em terminais de pagamento.",
+        "NSBonjourServices": [
+          "_spyrraw-probe._tcp"
+        ]
+      }
+    },
+    "android": {
+      "package": "com.wilson.spyrraw",
+      "permissions": [
+        "ACCESS_NETWORK_STATE",
+        "ACCESS_WIFI_STATE"
+      ]
+    }
+  }
+}
