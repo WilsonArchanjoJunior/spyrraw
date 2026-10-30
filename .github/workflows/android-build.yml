@@ -1,0 +1,44 @@
+﻿name: Build Android APK
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: # Permite disparar o build manualmente pelo site
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-size: 18
+          cache: 'npm'
+
+      - name: Instalar Dependências
+        run: npm install
+
+      - name: Configurar Java JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Configurar o Expo SDK e Pré-build Nativo
+        run: |
+          npx expo prebuild --platform android
+
+      - name: Compilar APK com Gradle (Debug App)
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
+      - name: Disponibilizar APK para Download (Artifact)
+        uses: actions/upload-artifact@v4
+        with:
+          name: spyrraw-debug-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
