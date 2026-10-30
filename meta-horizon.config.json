@@ -1,0 +1,18 @@
+﻿{
+  "targetPlatform": "meta_horizon_os",
+  "hardwareRequirements": {
+    "handTrackingRequired": true,
+    "passthroughPreferred": true,
+    "spatialAnchorsEnabled": false
+  },
+  "deploymentTarget": {
+    "storeChannel": "app_lab",
+    "supportedDevices": ["meta_quest_3", "meta_quest_pro", "oakley_spatial_specs_concept"]
+  },
+  "windowLayout": {
+    "initialMode": "floating_2d_panel",
+    "resizable": true,
+    "defaultWidthDp": 1024,
+    "defaultHeightDp": 768
+  }
+}
