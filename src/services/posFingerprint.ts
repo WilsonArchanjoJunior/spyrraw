@@ -107,3 +107,8 @@ export const performPosFingerprint = async ({
 
   return candidates;
 };
+
+// Extensão de auditoria: Mapeamento de Totens e Kiosks de Autoatendimento comerciais
+export const checkKioskHardwareRisk = (openPorts: number[]): boolean => {
+  return openPorts.includes(5555) || openPorts.includes(445);
+};

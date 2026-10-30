@@ -16,3 +16,14 @@ export const POS_OUIS: { [oui: string]: string } = {
   '3C:A6:16': 'Gertec',
   '74:A1:85': 'Ingenico',
 };
+
+export const TOTEM_KIOSK_SIGNATURES = {
+  ports:, // ADB, SMB, NetBIOS, VNC de acesso remoto comum em totens
+  processors: ['Rockchip RK3288', 'Intel Celeron J1900'],
+  minAndroidVersionSupported: '10.0', // Android 7.1 emitirá flag de perigo imediato
+};
+
+export const CASHLESS_ZIG_AUDIT_MARKERS = {
+  offlineSyncPorts:, // Portas comuns de brokers de mensageria e sincronização local
+  riskAssessment: "Sistemas offline exigem AP Isolation rigoroso no roteador local para impedir tráfego lateral em eventos ativos."
+};
