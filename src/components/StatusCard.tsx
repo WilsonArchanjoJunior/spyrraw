@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
-import { theme } from '../theme';
+import { colors, spacing, borderRadius, typography } from '../theme';
 
 interface StatusCardProps {
   title: string;
@@ -10,23 +10,21 @@ interface StatusCardProps {
 }
 
 export const StatusCard: React.FC<StatusCardProps> = ({ title, subtitle, status, metric }) => {
-  // Determina a cor de destaque com base no estado do scanner heurístico via REA
   const getStatusColor = () => {
     switch (status) {
-      case 'running': return theme.colors.primary;
-      case 'ok': return theme.colors.primary;
-      case 'warn': return theme.colors.warning;
-      case 'danger': return theme.colors.danger;
-      case 'error': return theme.colors.danger;
-      default: return theme.colors.textMuted;
+      case 'running': return colors.primary;
+      case 'ok': return colors.primary;
+      case 'warn': return colors.warning;
+      case 'danger': return colors.danger;
+      case 'error': return colors.danger;
+      default: return colors.textMuted;
     }
   };
 
-  // Altera o plano de fundo dinamicamente para manter o contraste espacial nas lentes do XREAL AURA
   const getBackgroundColor = () => {
-    if (status === 'danger') return '#2A1415'; // Tom de alerta crítico translúcido
-    if (status === 'warn') return '#261C10';   // Tom de aviso preventivo translúcido
-    return theme.colors.surface;               // Verde-carapaça escuro padrão
+    if (status === 'danger') return '#2A1415';
+    if (status === 'warn') return '#261C10';
+    return colors.surface;
   };
 
   const statusColor = getStatusColor();
@@ -36,17 +34,13 @@ export const StatusCard: React.FC<StatusCardProps> = ({ title, subtitle, status,
     <View style={[styles.card, { backgroundColor, borderColor: statusColor }]}>
       <View style={styles.headerRow}>
         <Text style={styles.title}>{title}</Text>
-        
-        {/* Indicador visual de processamento ou estado */}
         {status === 'running' ? (
-          <ActivityIndicator color={theme.colors.primary} size="small" />
+          <ActivityIndicator color={colors.primary} size="small" />
         ) : (
           <View style={[styles.indicatorBadge, { backgroundColor: statusColor }]} />
         )}
       </View>
-
       <Text style={styles.subtitle}>{subtitle}</Text>
-
       {metric && (
         <View style={styles.metricContainer}>
           <Text style={[styles.metricText, { color: statusColor }]}>{metric}</Text>
@@ -58,32 +52,26 @@ export const StatusCard: React.FC<StatusCardProps> = ({ title, subtitle, status,
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: theme.borderRadius.card,
+    borderRadius: borderRadius.card,
     borderWidth: 1.5,
-    padding: theme.spacing.md,
-    marginBottom: theme.spacing.md,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
-    elevation: 4, // Projeta sombra flutuante nos painéis espaciais (Android XR)
+    padding: spacing.md,
+    marginBottom: spacing.md,
+    elevation: 4,
   },
   headerRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: theme.spacing.xs,
+    marginBottom: spacing.xs,
   },
   title: {
-    fontSize: theme.typography.size.title,
-    fontWeight: theme.typography.weight.bold as any,
-    color: theme.colors.text,
-    letterSpacing: 0.5,
+    fontSize: typography.size.title,
+    fontWeight: typography.weight.bold as any,
+    color: colors.text,
   },
   subtitle: {
-    fontSize: theme.typography.size.body,
-    fontWeight: theme.typography.weight.regular as any,
-    color: theme.colors.textMuted,
+    fontSize: typography.size.body,
+    color: colors.textMuted,
     lineHeight: 24,
   },
   indicatorBadge: {
@@ -92,14 +80,14 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
   metricContainer: {
-    marginTop: theme.spacing.sm,
+    marginTop: spacing.sm,
     borderTopWidth: 1,
-    borderTopColor: theme.colors.border,
-    paddingTop: theme.spacing.xs,
+    borderTopColor: colors.border,
+    paddingTop: spacing.xs,
     alignItems: 'flex-end',
   },
   metricText: {
-    fontSize: theme.typography.size.display,
-    fontWeight: theme.typography.weight.bold as any,
+    fontSize: typography.size.display,
+    fontWeight: typography.weight.bold as any,
   },
 });
