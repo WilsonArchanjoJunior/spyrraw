@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-24.04 # Travado na estável para garantir compatibilidade com o Gradle do Expo
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
@@ -15,27 +15,28 @@ jobs:
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18 # Corrigido de node-size para node-version
+          node-version: 18
           cache: 'npm'
 
-      - name: Instalar Dependências
-        run: npm install
+      - name: Instalar Dependências Limpas (Clean Install)
+        run: |
+          npm ci || npm install --legacy-peer-deps
 
-      - name: Configurar Java JDK
-        uses: actions/setup-java@v5 # Atualizado para v5
+      - name: Configurar Java JDK 17 (Estável Gradle)
+        uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
-          java-version: '17' # Força o JDK 17 exigido pelo compilador do Android
+          java-version: '17'
 
-      - name: Configurar o Expo SDK e Pré-build Nativo
+      - name: Configurar o Expo SDK e Gerar Pastas Nativas
         run: |
-          npx expo prebuild --platform android
+          npx expo prebuild --platform android --clean
 
-      - name: Compilar APK com Gradle (Debug App)
+      - name: Compilar APK com Gradle (Debug Build)
         run: |
           cd android
           chmod +x gradlew
-          ./gradlew assembleDebug
+          ./gradlew assembleDebug --no-daemon
 
       - name: Disponibilizar APK para Download (Artifact)
         uses: actions/upload-artifact@v4
