@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-24.04
+
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
@@ -18,27 +19,32 @@ jobs:
           node-version: 18
           cache: 'npm'
 
-      - name: Instalar Dependências Limpas (Clean Install)
+      - name: Instalar Dependências Limpas
         run: |
           npm ci || npm install --legacy-peer-deps
 
-      - name: Configurar Java JDK 17 (Estável Gradle)
+      - name: Configurar Java JDK 17
         uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Configurar o Expo SDK e Gerar Pastas Nativas
+      - name: Configurar Expo e gerar projeto Android
+        env:
+          NODE_ENV: production
         run: |
           npx expo prebuild --platform android --clean
 
-      - name: Compilar APK com Gradle (Debug Build)
+      - name: Compilar APK com Gradle
+        env:
+          GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx2g -XX:MaxMetaspaceSize=512m -Dfile.encoding=UTF-8"
+          NODE_ENV: production
         run: |
           cd android
           chmod +x gradlew
           ./gradlew assembleDebug --no-daemon
 
-      - name: Disponibilizar APK para Download (Artifact)
+      - name: Disponibilizar APK para Download
         uses: actions/upload-artifact@v4
         with:
           name: spyrraw-debug-apk
