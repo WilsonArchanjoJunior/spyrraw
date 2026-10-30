@@ -1,25 +1,17 @@
 ﻿export const colors = {
-  background: '#0B130E', // Escuro cibernético (casco escuro)
-  surface: '#14221A',    // Cartões verde-carapaça
-  primary: '#1E4620',    // Verde militar operacional
-  accent: '#39FF14',     // Verde neon hacker para destaques e sucesso
-  text: '#ECF3F0',        // Branco suave texturizado
-  textMuted: '#8DA399',   // Verde cinzento para legendas
-  danger: '#FF3333',     // Vermelho suave para riscos críticos
-  warning: '#FFAA00',    // Âmbar para alertas e dados inconclusivos
+  background: '#0B0F19',    // Azul-escuro quase preto de fundo profundo
+  surface: '#161F30',       // Cinza-azulado dos cartões modulares
+  border: '#24334C',        // Bordas finas e discretas das caixas
+  textPrimary: '#F3F4F6',   // Branco acizentado para leitura confortável
+  textSecondary: '#9CA3AF', // Cinza claro para descrições e logs
+  accentGreen: '#10B981',   // Verde-Alethe para status limpo e botões
+  accentYellow: '#F59E0B',  // Amarelo tático para alertas médios
+  accentRed: '#EF4444',     // Vermelho crítico para portas expostas
 };
 
-export const spacing = {
-  xs: 4,
-  sm: 8,
-  md: 16,
-  lg: 24,
-  xl: 32,
-};
-
-export const radius = {
-  sm: 4,
-  md: 8,
-  lg: 12,
-  full: 9999,
+export const typography = {
+  fontMono: 'monospace',     // Essencial para exibição de IPs e logs do REA
+  sizeTitle: 22,
+  sizeBody: 14,
+  sizeLog: 12,
 };

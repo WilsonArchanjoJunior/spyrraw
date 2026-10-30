@@ -15,3 +15,6 @@ O Spyrraw possui suporte arquitetural nativo para o ecossistema **Meta Horizon O
 Como o Horizon OS compartilha a base do núcleo Android, a nossa fiação nativa de sockets de rede e extração de DHCP mantém paridade absoluta, alterando apenas a camada de renderização de tela:
 * **Horizon Flat Panels:** O aplicativo roda como uma janela flutuante de alta resolução no espaço de trabalho do usuário, operando de forma integrada ao ecossistema multitarefa da Meta.
 * **Orquestração de Agentes Dedicada:** O ecossistema `alethe-orchestrate-skill` gerencia o consumo de processamento local nos óculos, garantindo que as varreduras heurísticas de portas de risco mapeadas via **REA (`morluto/rea`)** rodem sem causar estresse térmico ou drenagem severa de bateria no hardware vestível.
+
+## 📊 Inteligência de Mercado e Prevenção de Perdas
+O Spyrraw não monitora apenas variáveis abstratas; ele expande os conceitos de prevenção de perdas e combate a fraudes operacionais promovidos por líderes do mercado de consumo *cashless* como a **ZIG**. O scanner atua como a blindagem cibernética de relatórios e checklists de campo, protegendo os buffers de transações e a integridade dos totens comerciais contra acessos laterais maliciosos.
